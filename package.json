@@ -5,7 +5,7 @@
   "scripts": {
     "copy": "mkdir -p ./build/public; cp -r ./src/public/* ./build/public/",
     "build": "npm run copy; ./node_modules/.bin/webpack --config ./webpack.config.js",
-    "dev": "npm run copy; ./node_modules/.bin/webpack --config ./webpack.config.js --watch",
+    "dev": "npm run copy; ./node_modules/.bin/webpack-dev-server --config ./webpack.config.js --progress --content-base ./build/public",
     "clean": "rm -rf ./build"
   },
   "author": "Florian Klampfer <f.klampfer@gmail.com> (http://qwtel.com)",
@@ -15,6 +15,7 @@
     "react-dom": "^15.0.2"
   },
   "devDependencies": {
-    "webpack": "^1.13.0"
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1"
   }
 }

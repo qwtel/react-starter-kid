@@ -7,7 +7,9 @@ module.exports = {
   entry: path.resolve(__dirname, 'src/index.js'),
   output: {
     path: path.resolve(__dirname, 'build/public/js'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    // Need to tell the webpack-dev-server where your assets should be served:
+    publicPath: 'js'
   },
   plugins: [
     // Need to set NODE_ENV to `"production"` to include minified version of React
