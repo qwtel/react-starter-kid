@@ -4,10 +4,21 @@ var webpack = require('webpack');
 var DEBUG = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src/index.js'),
+  entry: [
+    // Include polyfills for ES2015 in the final bundle
+    'babel-polyfill',
+    path.resolve(__dirname, 'src/index.js')
+  ],
   output: {
     path: path.resolve(__dirname, 'build/public/js'),
     filename: 'bundle.js'
+  },
+  module: {
+    loaders: [{
+      test: /\.js$/,
+      exclude: /node_modules/,
+      loader: 'babel-loader'
+    }]
   },
   plugins: [
     // Need to set NODE_ENV to `"production"` to include minified version of React

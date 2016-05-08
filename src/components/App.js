@@ -1,17 +1,13 @@
-var React = require('react');
+import React, {Component} from 'react';
 
-var App = React.createClass({
-  displayName: 'App',
-
-  render: function() {
+class App extends Component {
+  render() {
     return (
-      React.createElement('div', null,
-        React.createElement('h1', null,
-          'Hello, World!'
-        )
-      )
+      <div>
+        <h1>Hello, World!</h1>
+      </div>
     );
   }
-});
+}
 
-module.exports = App;
+export default App;
