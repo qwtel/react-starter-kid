@@ -14,6 +14,8 @@ module.exports = {
     filename: 'bundle.js'
   },
   debug: DEBUG,
+  // Write source maps. Supports "cheaper" options as well.
+  // https://webpack.github.io/docs/configuration.html#devtool
   devtool: DEBUG ? 'source-map' : null,
   module: {
     loaders: [{
