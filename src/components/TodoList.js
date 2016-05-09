@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { List, is } from 'immutable';
 
 import Todo from './Todo';
 
@@ -7,7 +8,7 @@ const TodoList = ({ todos, onTodoClick }) => (
     {todos.map(todo =>
       <Todo
         key={todo.id}
-        {...todo}
+        todo={todo}
         onClick={() => onTodoClick(todo.id)}
       />
     )}
@@ -15,12 +16,12 @@ const TodoList = ({ todos, onTodoClick }) => (
 );
 
 TodoList.propTypes = {
-  todos: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    completed: PropTypes.bool.isRequired,
-    text: PropTypes.string.isRequired,
-  }).isRequired).isRequired,
+  todos: PropTypes.instanceOf(List).isRequired,
   onTodoClick: PropTypes.func.isRequired,
 };
+
+TodoList.shouldComponentUpdate = (nextProps) => (
+  !is(this.todos, newProps.todos)
+);
 
 export default TodoList;
