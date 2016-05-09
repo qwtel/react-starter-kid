@@ -7,7 +7,7 @@
     "build": "npm run copy; webpack",
     "build:prod": "npm run copy; NODE_ENV=production webpack",
     "dev": "npm run copy; webpack-dev-server",
-    "clean": "rm -rf ./build"
+    "clean": "rm -r ./build"
   },
   "author": "Florian Klampfer <f.klampfer@gmail.com> (http://qwtel.com)",
   "license": "MIT",
