@@ -11,7 +11,9 @@ module.exports = {
   ],
   output: {
     path: path.resolve(__dirname, 'build/public/js'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    // Need to tell the webpack-dev-server where your assets should be served:
+    publicPath: 'js'
   },
   debug: DEBUG,
   devtool: DEBUG ? 'source-map' : null,

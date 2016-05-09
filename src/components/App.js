@@ -1,15 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router';
 
-import Footer from './Footer';
-import AddTodo from '../containers/AddTodo';
-import VisibleTodoList from '../containers/VisibleTodoList';
-
-const App = () => (
+const App = ({ children }) => (
   <div>
-    <h1>Hello, World!</h1>
-    <AddTodo />
-    <VisibleTodoList />
-    <Footer />
+    <ul>
+      <li><Link to="/">Home</Link></li>
+      <li><Link to="/todos">Todos</Link></li>
+      <li><Link to="/about">About</Link></li>
+    </ul>
+    {children}
   </div>
 );
 
