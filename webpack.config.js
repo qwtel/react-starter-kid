@@ -10,6 +10,8 @@ module.exports = {
     filename: 'bundle.js'
   },
   debug: DEBUG,
+  // Write source maps. Supports "cheaper" options as well.
+  // https://webpack.github.io/docs/configuration.html#devtool
   devtool: DEBUG ? 'source-map' : null,
   plugins: [
     // Need to set NODE_ENV to `"production"` to include minified version of React
