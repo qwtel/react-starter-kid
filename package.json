@@ -6,7 +6,7 @@
     "copy": "mkdir -p ./build/public; cp -r ./src/public/* ./build/public",
     "build": "npm run copy; webpack",
     "build:prod": "npm run copy; NODE_ENV=production webpack",
-    "dev": "npm run copy; webpack --watch --debug --devtool source-map",
+    "dev": "npm run copy; webpack --watch",
     "clean": "rm -rf ./build",
     "lint": "eslint ."
   },
