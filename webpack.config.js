@@ -41,5 +41,9 @@ module.exports = {
     // A plugin for a more aggressive chunk merging strategy.
     // https://webpack.github.io/docs/list-of-plugins.html#aggressivemergingplugin
     new webpack.optimize.AggressiveMergingPlugin()
-  ])
+  ]),
+
+  devServer: {
+    contentBase: './build/public'
+  }
 }
