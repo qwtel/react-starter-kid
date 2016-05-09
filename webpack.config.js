@@ -30,6 +30,11 @@ module.exports = {
     }]
   },
 
+  // Bundle `.prod.js` files for production builds (`.dev.js` otherwise)
+  resolve: {
+    extensions: DEBUG ? ["", ".dev.js", ".js"] : ["", ".prod.js", ".js"]
+  },
+
   plugins: [
 
     // Need to set NODE_ENV to `"production"` to include minified version of React
