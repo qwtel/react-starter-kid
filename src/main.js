@@ -3,7 +3,6 @@ import { render } from 'react-dom';
 import { Router, Route, IndexRoute, Link, browserHistory } from 'react-router';
 
 import App from './components/App';
-
 import Home from './components/Home';
 import About from './components/About';
 
