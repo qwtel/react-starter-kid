@@ -1,12 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
 
-import todoApp from './reducers';
+import configureStore from './store/configureStore';
 import App from './components/App';
 
-const store = createStore(todoApp);
+const store = configureStore();
 
 render(
   <Provider store={store}>
