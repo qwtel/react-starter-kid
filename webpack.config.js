@@ -15,6 +15,8 @@ module.exports = {
     // Need to tell the webpack-dev-server where your assets should be served:
     publicPath: 'js'
   },
+  debug: DEBUG,
+  devtool: DEBUG ? 'source-map' : null,
   module: {
     loaders: [{
       test: /\.js$/,
