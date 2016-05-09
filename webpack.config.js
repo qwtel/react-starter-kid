@@ -5,24 +5,31 @@ var DEBUG = process.env.NODE_ENV !== 'production';
 
 module.exports = {
   entry: path.resolve(__dirname, 'src/main.js'),
+
   output: {
     path: path.resolve(__dirname, 'build/public/js'),
     filename: 'bundle.js',
     // Need to tell the webpack-dev-server where your assets should be served:
     publicPath: 'js'
   },
+
   debug: DEBUG,
+
   // Write source maps. Supports "cheaper" options as well.
   // https://webpack.github.io/docs/configuration.html#devtool
   devtool: DEBUG ? 'source-map' : null,
+
   plugins: [
+
     // Need to set NODE_ENV to `"production"` to include minified version of React
     // https://webpack.github.io/docs/list-of-plugins.html#defineplugin
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': DEBUG ? '"development"' : '"production"'
     })
-  // Add additional plugins for production builds
+
+  // Add additional plugins for development builds
   ].concat(DEBUG ? [] : [
+
     // Search for equal or similar files and deduplicate them in the output.
     // https://webpack.github.io/docs/list-of-plugins.html#dedupeplugin
     new webpack.optimize.DedupePlugin(),
