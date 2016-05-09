@@ -9,6 +9,8 @@ module.exports = {
     path: path.resolve(__dirname, 'build/public/js'),
     filename: 'bundle.js'
   },
+  debug: DEBUG,
+  devtool: DEBUG ? 'source-map' : null,
   plugins: [
     // Need to set NODE_ENV to `"production"` to include minified version of React
     // https://webpack.github.io/docs/list-of-plugins.html#defineplugin
