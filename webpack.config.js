@@ -7,7 +7,7 @@ module.exports = {
   entry: [
     // Include polyfills for ES2015 in the final bundle
     'babel-polyfill',
-    path.resolve(__dirname, 'src/index.js')
+    path.resolve(__dirname, 'src/main.js')
   ],
   output: {
     path: path.resolve(__dirname, 'build/public/js'),
