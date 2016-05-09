@@ -4,7 +4,7 @@ var webpack = require('webpack');
 var DEBUG = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src/index.js'),
+  entry: path.resolve(__dirname, 'src/main.js'),
   output: {
     path: path.resolve(__dirname, 'build/public/js'),
     filename: 'bundle.js'
