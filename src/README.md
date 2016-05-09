@@ -6,4 +6,4 @@ We assume the following:
 
   * React components go in `components`
   * Static assets go in `public`
-  * `index.js` is the entry point of the React app.
+  * `main.js` is the entry point of the React app.
