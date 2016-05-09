@@ -4,8 +4,8 @@
   "description": "",
   "scripts": {
     "copy": "mkdir -p ./build/public; cp -r ./src/public/* ./build/public/",
-    "build": "npm run copy; ./node_modules/.bin/webpack --config ./webpack.config.js",
-    "dev": "npm run copy; ./node_modules/.bin/webpack --config ./webpack.config.js --watch",
+    "build": "npm run copy; webpack --config ./webpack.config.js",
+    "dev": "npm run copy; webpack --config ./webpack.config.js --watch",
     "clean": "rm -rf ./build"
   },
   "author": "Florian Klampfer <f.klampfer@gmail.com> (http://qwtel.com)",
