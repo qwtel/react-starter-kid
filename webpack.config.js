@@ -13,6 +13,8 @@ module.exports = {
     path: path.resolve(__dirname, 'build/public/js'),
     filename: 'bundle.js'
   },
+  debug: DEBUG,
+  devtool: DEBUG ? 'source-map' : null,
   module: {
     loaders: [{
       test: /\.js$/,
