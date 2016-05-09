@@ -5,9 +5,9 @@
   "scripts": {
     "copy": "mkdir -p ./build/public; cp -r ./src/public/* ./build/public",
     "build": "npm run copy; webpack",
-    "build:prod": "npm run copy; NODE_ENV=production webpack",
+    "build:prod": "npm run copy; cross-env NODE_ENV=production webpack",
     "dev": "npm run copy; webpack --watch",
-    "clean": "rm -rf ./build"
+    "clean": "rm -r ./build"
   },
   "author": "Florian Klampfer <f.klampfer@gmail.com> (http://qwtel.com)",
   "license": "MIT",
@@ -16,6 +16,10 @@
     "react-dom": "^15.0.2"
   },
   "devDependencies": {
+    "cash-cp": "^0.2.0",
+    "cash-mkdir": "^0.2.0",
+    "cash-rm": "^0.2.0",
+    "cross-env": "^1.0.7",
     "webpack": "^1.13.0"
   }
 }
