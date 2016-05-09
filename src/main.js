@@ -1,18 +1,17 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import { Router, Route, IndexRoute, Link, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux'
 
-import todoApp from './reducers';
+import configureStore from './store/configureStore';
 import App from './components/App';
 
 import Home from './routes/Home';
 import Todos from './routes/Todos';
 import About from './routes/About';
 
-const store = createStore(todoApp);
+const store = configureStore();
 
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store)
