@@ -1,7 +1,21 @@
 var path = require('path');
 var webpack = require('webpack');
+var autoprefixer = require('autoprefixer');
+
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var DEBUG = process.env.NODE_ENV !== 'production';
+
+var AUTOPREFIXER_BROWSERS = [
+  'Android 2.3',
+  'Android >= 4',
+  'Chrome >= 35',
+  'Firefox >= 31',
+  'Explorer >= 9',
+  'iOS >= 7',
+  'Opera >= 12',
+  'Safari >= 7.1',
+];
 
 module.exports = {
 
@@ -9,11 +23,11 @@ module.exports = {
 
     // Include polyfills for ES2015 in the final bundle
     'babel-polyfill',
-    path.resolve(__dirname, 'src/main.js')
+    path.resolve('./src/main.js')
   ],
 
   output: {
-    path: path.resolve(__dirname, 'build/public/js'),
+    path: path.resolve('./build/public'),
     filename: 'bundle.js'
   },
 
@@ -28,8 +42,33 @@ module.exports = {
       test: /\.js$/,
       exclude: /node_modules/,
       loader: 'babel-loader'
+    },
+    {
+      test: /\.css$/,
+      loader: ExtractTextPlugin.extract(
+        'style-loader',
+        'css-loader?modules&importLoaders=1&localIdentName=' + (DEBUG ?
+          '[name]__[local]___[hash:base64:5]' :
+          '[hash:base64:10]'
+        ),
+        'postcss-loader'
+      )
+    },
+    {
+      test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
+      loader: 'url-loader',
+      query: {
+        name: DEBUG ? '[path][name].[ext]?[hash]' : '[hash].[ext]',
+        limit: 10000,
+      },
     }]
   },
+
+  postcss: [
+    autoprefixer({
+      browsers: AUTOPREFIXER_BROWSERS
+    })
+  ],
 
   plugins: [
 
@@ -37,7 +76,9 @@ module.exports = {
     // https://webpack.github.io/docs/list-of-plugins.html#defineplugin
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': DEBUG ? '"development"' : '"production"'
-    })
+    }),
+
+    new ExtractTextPlugin('bundle.css')
 
   // Add additional plugins for development builds
   ].concat(DEBUG ? [] : [

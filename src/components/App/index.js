@@ -1,7 +1,9 @@
 import React from 'react';
 
+import { otherClassName } from './app.css';
+
 const App = () => (
-  <div>
+  <div className={otherClassName}>
     <h1>Hello, World!</h1>
   </div>
 );

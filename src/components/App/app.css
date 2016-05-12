@@ -1,0 +1,11 @@
+.className {
+  color: green;
+  background: red;
+}
+
+.otherClassName {
+  composes: className;
+  color: yellow;
+  background-image: url('./twitter.svg');
+  background-repeat: repeat;
+}
