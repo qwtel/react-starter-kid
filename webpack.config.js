@@ -14,7 +14,7 @@ var AUTOPREFIXER_BROWSERS = [
   'Explorer >= 9',
   'iOS >= 7',
   'Opera >= 12',
-  'Safari >= 7.1',
+  'Safari >= 7.1'
 ];
 
 module.exports = {
@@ -23,6 +23,10 @@ module.exports = {
 
     // Include polyfills for ES2015 in the final bundle
     'babel-polyfill',
+
+    // Include css that normalizes default styles
+    'normalize.css',
+
     path.resolve('./src/main.js')
   ],
 
