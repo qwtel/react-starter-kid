@@ -47,10 +47,13 @@ module.exports = {
       test: /\.css$/,
       loader: ExtractTextPlugin.extract(
         'style-loader',
-        'css-loader?modules&importLoaders=1&localIdentName=' + (DEBUG ?
-          '[name]__[local]___[hash:base64:5]' :
-          '[hash:base64:10]'
-        ),
+        'css-loader?' + JSON.stringify({
+          modules: true,
+          importLoaders: 1,
+          localIdentName: DEBUG ? '[name]_[local]_[hash:base64:4]' : '[hash:base64:8]',
+          sourceMap: DEBUG,
+          minimize: !DEBUG
+        }),
         'postcss-loader'
       )
     },
