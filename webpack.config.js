@@ -4,13 +4,11 @@ var webpack = require('webpack');
 var DEBUG = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src/main.js'),
+  entry: path.resolve('./src/main.js'),
 
   output: {
-    path: path.resolve(__dirname, 'build/public/js'),
-    filename: 'bundle.js',
-    // Need to tell the webpack-dev-server where your assets should be served:
-    publicPath: 'js'
+    path: path.resolve('./build/public'),
+    filename: 'bundle.js'
   },
 
   debug: DEBUG,
