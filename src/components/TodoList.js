@@ -1,15 +1,15 @@
-import React, { PropTypes } from 'react';
-import { List, is } from 'immutable';
+import React, { Component, PropTypes } from 'react';
+import { List } from 'immutable';
+import { immutableRenderDecorator } from 'react-immutable-render-mixin';
 
 import Todo from './Todo';
 
-const TodoList = ({ todos, onTodoClick }) => (
+const TodoList = ({ todos }) => (
   <ul>
     {todos.map(todo =>
       <Todo
         key={todo.id}
         todo={todo}
-        onClick={() => onTodoClick(todo.id)}
       />
     )}
   </ul>
@@ -17,11 +17,7 @@ const TodoList = ({ todos, onTodoClick }) => (
 
 TodoList.propTypes = {
   todos: PropTypes.instanceOf(List).isRequired,
-  onTodoClick: PropTypes.func.isRequired,
+  // onTodoClick: PropTypes.func.isRequired,
 };
 
-TodoList.shouldComponentUpdate = (nextProps) => (
-  !is(this.todos, newProps.todos)
-);
-
-export default TodoList;
+export default immutableRenderDecorator(TodoList);

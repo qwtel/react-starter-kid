@@ -1,13 +1,14 @@
 import React, { PropTypes } from 'react';
-import { Collection, is } from 'immutable';
+import { Collection } from 'immutable';
+import { immutableRenderDecorator } from 'react-immutable-render-mixin';
 
-const Todo = ({ onClick, todo: {completed, text} }) => (
+const Todo = ({ todo: { completed, text } }, { onClick }) => (
   <li
     style={{
       textDecoration: completed ? 'line-through' : 'none',
     }}
   >
-    {console.log("render")}
+    {console.log(text)}
     <input
       type="checkbox"
       checked={completed}
@@ -20,12 +21,10 @@ const Todo = ({ onClick, todo: {completed, text} }) => (
 
 Todo.propTypes = {
   todo: PropTypes.instanceOf(Collection),
+};
+
+Text.contextTypes = {
   onClick: PropTypes.func.isRequired,
 };
 
-Todo.shouldComponentUpdate = (nextProps) => {
-  console.log(this.todo);
-  !is(this.todo, newProps.todo)
-};
-
-export default Todo;
+export default immutableRenderDecorator(Todo);

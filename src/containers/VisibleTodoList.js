@@ -1,6 +1,6 @@
-import { connect } from 'react-redux';
-import { toggleTodo } from '../actions';
+import connectContext from 'react-redux-connect-context';
 
+import { toggleTodo } from '../actions';
 import TodoList from '../components/TodoList';
 
 const getVisibleTodos = (todos, filter) => {
@@ -26,7 +26,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-const VisibleTodoList = connect(
+const VisibleTodoList = connectContext(
   mapStateToProps,
   mapDispatchToProps
 )(TodoList);
