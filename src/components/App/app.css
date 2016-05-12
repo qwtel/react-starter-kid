@@ -8,4 +8,5 @@
   color: yellow;
   background-image: url('./twitter.svg');
   background-repeat: repeat;
+  transform: translateY(-21px);
 }

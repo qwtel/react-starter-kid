@@ -6,17 +6,6 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var DEBUG = process.env.NODE_ENV !== 'production';
 
-var AUTOPREFIXER_BROWSERS = [
-  'Android 2.3',
-  'Android >= 4',
-  'Chrome >= 35',
-  'Firefox >= 31',
-  'Explorer >= 9',
-  'iOS >= 7',
-  'Opera >= 12',
-  'Safari >= 7.1'
-];
-
 module.exports = {
 
   entry: [
@@ -51,31 +40,31 @@ module.exports = {
       test: /\.css$/,
       loader: ExtractTextPlugin.extract(
         'style-loader',
-        'css-loader?' + JSON.stringify({
-          modules: true,
-          importLoaders: 1,
-          localIdentName: DEBUG ? '[name]_[local]_[hash:base64:4]' : '[hash:base64:8]',
-          sourceMap: DEBUG,
-          minimize: !DEBUG
-        }),
-        'postcss-loader'
+        [
+          'css-loader?' + JSON.stringify({
+            modules: true,
+            importLoaders: 1,
+            localIdentName: DEBUG ? '[name]_[local]_[hash:base64:4]' : '[hash:base64:8]',
+            sourceMap: DEBUG,
+            minimize: !DEBUG
+          }),
+          'postcss-loader'
+        ]
       )
     },
     {
       test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
       loader: 'url-loader',
       query: {
-        name: DEBUG ? '[path][name].[ext]?[hash]' : '[hash].[ext]',
-        limit: 10000,
+        name: DEBUG ? '[path][name].[ext]?[hash:base64:4]' : '[hash].[ext]',
+        limit: 10000
       },
     }]
   },
 
-  postcss: [
-    autoprefixer({
-      browsers: AUTOPREFIXER_BROWSERS
-    })
-  ],
+  postcss: function () {
+    return [autoprefixer];
+  },
 
   plugins: [
 
