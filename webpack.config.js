@@ -8,14 +8,12 @@ module.exports = {
 
     // Include polyfills for ES2015 in the final bundle
     'babel-polyfill',
-    path.resolve(__dirname, 'src/main.js')
+    path.resolve('./src/main.js')
   ],
 
   output: {
-    path: path.resolve(__dirname, 'build/public/js'),
-    filename: 'bundle.js',
-    // Need to tell the webpack-dev-server where your assets should be served:
-    publicPath: 'js'
+    path: path.resolve('./build/public'),
+    filename: 'bundle.js'
   },
 
   debug: DEBUG,
