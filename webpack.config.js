@@ -4,6 +4,7 @@ var webpack = require('webpack');
 var DEBUG = process.env.NODE_ENV !== 'production';
 
 module.exports = {
+
   entry: [
 
     // Include polyfills for ES2015 in the final bundle
