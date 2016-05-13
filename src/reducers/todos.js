@@ -1,4 +1,33 @@
-const todo = (state, action) => {
+// @flow
+
+type Todo = {
+  id: string;
+  text: string;
+  completed: bool;
+};
+
+type AddTodoAction = {
+  type: 'ADD_TODO';
+  id: string;
+  text: string;
+};
+
+type ToggleTodoAction = {
+  type: 'TOGGLE_TODO';
+  id: string;
+};
+
+type Action = AddTodoAction | ToggleTodoAction;
+
+function createTodo(action: AddTodoAction): Todo {
+  return {
+    id: action.id,
+    text: action.text,
+    completed: false,
+  };
+}
+
+const todo = (state: Todo, action: Action): Todo => {
   switch (action.type) {
     case 'ADD_TODO':
       return {
@@ -19,12 +48,12 @@ const todo = (state, action) => {
   }
 };
 
-const todos = (state = [], action) => {
+const todos = (state: Array<Todo> = [], action: Action): Array<Todo> => {
   switch (action.type) {
     case 'ADD_TODO':
       return [
         ...state,
-        todo(undefined, action),
+        createTodo(action),
       ];
     case 'TOGGLE_TODO':
       return state.map(t =>

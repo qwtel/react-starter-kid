@@ -1,6 +1,14 @@
+// @flow
+
 import React, { PropTypes } from 'react';
 
-const Todo = ({ onClick, completed, text }) => (
+type PropsType = {
+  onClick: any;
+  completed: boolean;
+  text: string;
+};
+
+const Todo = ({ onClick, completed, text }: PropsType) => (
   <li
     style={{
       textDecoration: completed ? 'line-through' : 'none',

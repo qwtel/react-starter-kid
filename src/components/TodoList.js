@@ -1,8 +1,19 @@
+// @flow
+
 import React, { PropTypes } from 'react';
 
 import Todo from './Todo';
 
-const TodoList = ({ todos, onTodoClick }) => (
+type PropsType = {
+  todos: Array<{
+    id: string;
+    text: string;
+    completed: boolean;
+  }>;
+  onTodoClick: any;
+};
+
+const TodoList = ({ todos, onTodoClick }: PropsType) => (
   <ul>
     {todos.map(todo =>
       <Todo
